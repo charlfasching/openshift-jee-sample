@@ -4,6 +4,7 @@ package za.co.charl.rest;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
@@ -40,9 +41,12 @@ public class TestService {
 
     @GET
     @Path("/who")
-    public Response test(@HeaderParam("Host") String hostName) {
+    public Response test() {
         
-        return Response.ok(hostName).build();
+        Optional<String> hostName = Optional.ofNullable(System.getenv("HOSTNAME"));
+        
+                
+        return Response.ok(hostName.orElse("Unknown")).build();
     }
     
     
