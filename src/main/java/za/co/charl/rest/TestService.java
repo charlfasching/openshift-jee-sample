@@ -5,6 +5,7 @@ package za.co.charl.rest;
 import java.util.Arrays;
 import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -38,16 +39,13 @@ public class TestService {
     }
 
     @GET
-    @Path("/test")
-    public Response test() {
-        return Response.ok("Tested").build();
+    @Path("/who")
+    public Response test(@HeaderParam("Host") String hostName) {
+        
+        return Response.ok(hostName).build();
     }
     
-    @GET
-    @Path("/other")
-    public Response other() {
-        return Response.ok("Other Worldly").build();
-    }
+    
 
   
 }
