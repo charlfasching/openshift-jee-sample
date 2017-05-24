@@ -6,7 +6,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import javax.ws.rs.GET;
-import javax.ws.rs.HeaderParam;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -29,7 +28,7 @@ public class TestService {
     @GET
     @Path("/list")
     public Response list() {
-        List<String> atrs = Arrays.asList("Attribute1","Attribute2");
+        List<String> atrs = Arrays.asList("Item1","Item2");
         return Response.ok(atrs).build();
     }
     
@@ -44,8 +43,6 @@ public class TestService {
     public Response test() {
         
         Optional<String> hostName = Optional.ofNullable(System.getenv("HOSTNAME"));
-        
-                
         return Response.ok(hostName.orElse("Unknown")).build();
     }
     
