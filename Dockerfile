@@ -1,5 +1,6 @@
-FROM jboss/base-jdk:8
+FROM jre8.server
 
-COPY ./target/SampleApp-swarm.jar /usr/local/lib/
-
-CMD ["java", "-jar" "/usr/local/lib/SampleApp-swarm.jar"]
+COPY ./target/SampleApp-swarm.jar /usr/lib/swarm.jar 
+EXPOSE 8080
+CMD java -jar  /usr/lib/swarm.jar
+ 
